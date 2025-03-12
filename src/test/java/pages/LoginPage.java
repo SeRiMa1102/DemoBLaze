@@ -25,7 +25,9 @@ public class LoginPage {
     private static final By USERSIGN_FIELD = By.id("sign-username");
     private static final By PASSWORDSIGN_FIELD = By.id("sign-password");
     private static final By SIGNUP_BUTTON = By.cssSelector("[onclick=\"register()\"]");
-    private static final By LOGINACCES_ITEM = By.id("sign-password");
+    private static final By LOGINACCES_ITEM = By.id("nameofuser");
+
+    private static final String DEVICE_AREA = "//a[text()='%s']";
 
     public void open () {
         driver.get("https://www.demoblaze.com/");
@@ -55,11 +57,22 @@ public class LoginPage {
         return alertText;
     }
 
-    public String getUserName() {
+    public boolean getUserName(String input) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(LOGINACCES_ITEM));
+
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(LOGINACCES_ITEM, "Welcome " + input));
+
         String text = driver.findElement(LOGINACCES_ITEM).getText();
-        System.out.println("Текст элемента: " + text);
-        return driver.findElement(LOGINACCES_ITEM).getText();
+        System.out.println("Обновленный текст элемента: " + text);
+        return true;
     }
+
+    public void addToCart(String product) {
+        driver.findElement(By.xpath(String.format(DEVICE_AREA, product))).click();
+    }
+
+
+
+
 }

@@ -12,7 +12,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.time.Duration;
 
 public class BaseTest {
-    private static final Logger log = LoggerFactory.getLogger(BaseTest.class);
     protected WebDriver driver;
     LoginPage loginPage;
 
@@ -28,6 +27,6 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+//        driver.quit();
     }
 }

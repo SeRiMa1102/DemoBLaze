@@ -64,6 +64,6 @@ public class LoginTest extends BaseTest {
     private void checkPositiveLogin() {
         loginPage.open();
         loginPage.login("RinatTest", "password");
-        Assert.assertEquals(loginPage.getUserName(), "Welcome RinatTest");
+        Assert.assertTrue(loginPage.getUserName("RinatTest"));
     }
 }
