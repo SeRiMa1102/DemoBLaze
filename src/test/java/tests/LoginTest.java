@@ -46,20 +46,20 @@ public class LoginTest extends BaseTest {
 //        Assert.assertEquals(loginPage.getErrorMessage(), "Sign up successful.");
 //    }
 
-//    @Test
-//    public  void checkNegativeSignUp() {
-//        loginPage.open();
-//        //test in ci!!!
-//        loginPage.signUp("RinatTest", "1234");
-//        Assert.assertEquals(loginPage.getErrorMessage(), "This user already exist.");
-//    }
-//
-//    @Test
-//    public void checkNegativeLoginAfterSigningInWrongPassword() {
-//        loginPage.open();
-//        loginPage.login("RinatTest", "1234");
-//        Assert.assertEquals(loginPage.getErrorMessage(), "Wrong password.");
-//    }
+    @Test
+    public  void checkNegativeSignUp() {
+        loginPage.open();
+        //test in ci!!!
+        loginPage.signUp("RinatTest", "1234");
+        Assert.assertEquals(loginPage.getErrorMessage(), "This user already exist.");
+    }
+
+    @Test
+    public void checkNegativeLoginAfterSigningInWrongPassword() {
+        loginPage.open();
+        loginPage.login("RinatTest", "1234");
+        Assert.assertEquals(loginPage.getErrorMessage(), "Wrong password.");
+    }
 
     @Test
     public void checkPositiveLogin() {
