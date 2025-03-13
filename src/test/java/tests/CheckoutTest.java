@@ -3,9 +3,9 @@ package tests;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Link;
+import models.Customer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.ProductPage;
 
 public class CheckoutTest extends BaseTest {
     @Test
@@ -18,7 +18,17 @@ public class CheckoutTest extends BaseTest {
         Assert.assertTrue(loginPage.open().login(str, "password").getUserName(str));
 
         Assert.assertNotEquals(loginPage.openProductPage(product).pressToCart().getAddedSuccessMessage(), "");
-        productPage.openCart().placeOrder().fillOrderAndPress();
+
+        Customer customer = Customer.builder()
+                .firstName("Rinat")
+                .country("Russia")
+                .city("Moscow")
+                .card("109004")
+                .month("11")
+                .year("2025")
+                .build();
+
+        productPage.openCart().placeOrder().fillOrderAndPress(customer);
         Assert.assertEquals(cartPage.resultMessage(), "Thank you for your purchase!");
     }
 }

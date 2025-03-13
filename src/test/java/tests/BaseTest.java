@@ -26,8 +26,11 @@ public class BaseTest {
     public void setup() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
+        options.addArguments("--headless");
+        options.addArguments("--start-maximized");
+        options.addArguments("--disable-notification");
+
         driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginPage = new LoginPage(driver);
         productPage = new ProductPage(driver);

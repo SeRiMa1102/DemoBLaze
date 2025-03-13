@@ -1,6 +1,7 @@
 package pages;
 
 import io.qameta.allure.Step;
+import models.Customer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -36,13 +37,13 @@ public class CartPage {
     }
 
     @Step("Fill order form")
-    public void fillOrderAndPress() {
-        driver.findElement(NAME_AREA).sendKeys("Rinat");
-        driver.findElement(COUNTRY_AREA).sendKeys("Russia");
-        driver.findElement(CITY_AREA).sendKeys("Moscow");
-        driver.findElement(CARD_AREA).sendKeys("109004");
-        driver.findElement(MONTH_AREA).sendKeys("11");
-        driver.findElement(YEAR_AREA).sendKeys("2025");
+    public void fillOrderAndPress(@org.jetbrains.annotations.NotNull Customer customer) {
+        driver.findElement(NAME_AREA).sendKeys(customer.getFirstName());
+        driver.findElement(COUNTRY_AREA).sendKeys(customer.getCountry());
+        driver.findElement(CITY_AREA).sendKeys(customer.getCity());
+        driver.findElement(CARD_AREA).sendKeys(customer.getCard());
+        driver.findElement(MONTH_AREA).sendKeys(customer.getMonth());
+        driver.findElement(YEAR_AREA).sendKeys(customer.getYear());
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(PURCHASE_AREA));
