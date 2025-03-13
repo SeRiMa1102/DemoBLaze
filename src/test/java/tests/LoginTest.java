@@ -38,12 +38,12 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(loginPage.getErrorMessage(), "Please fill out Username and Password.");
     }
 
-//    @Test
-//    public void checkPositiveSignUp() {
-//        loginPage.open();
-//        loginPage.signUp("RinatTest", "password");
-//        Assert.assertEquals(loginPage.getErrorMessage(), "Sign up successful.");
-//    }
+    @Test
+    public void checkPositiveSignUp() {
+        loginPage.open();
+        loginPage.signUp("RinatTest", "password");
+        Assert.assertEquals(loginPage.getErrorMessage(), "Sign up successful.");
+    }
 
     @Test
     public  void checkNegativeSignUp() {
