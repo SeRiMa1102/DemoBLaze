@@ -20,7 +20,7 @@ public class CheckoutTest extends BaseTest {
         Assert.assertNotEquals(loginPage.openProductPage(product).pressToCart().getAddedSuccessMessage(), "");
 
         Customer customer = Customer.builder()
-                .firstName("Rinat")
+                .firstName("RinatTest")
                 .country("Russia")
                 .city("Moscow")
                 .card("109004")
