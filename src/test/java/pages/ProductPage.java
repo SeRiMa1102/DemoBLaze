@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,19 +19,23 @@ public class ProductPage {
         this.driver = driver;
     }
 
-    public void pressToCart() {
+    @Step("Cart product")
+    public ProductPage pressToCart() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(ADD_TO_CART_AREA));
         driver.findElement(ADD_TO_CART_AREA).click();
+        return this;
     }
 
-    public void openCart() {
+    @Step("Open page CartPage")
+    public CartPage openCart() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(CART_AREA));
         driver.findElement(CART_AREA).click();
+        return new CartPage(driver);
     }
 
-
+    @Step("Get alert text after added to cart")
     public String getAddedSuccessMessage() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.alertIsPresent());

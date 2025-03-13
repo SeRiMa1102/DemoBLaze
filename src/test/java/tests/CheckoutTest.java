@@ -1,24 +1,20 @@
 package tests;
 
+import io.qameta.allure.Link;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.ProductPage;
 
 public class CheckoutTest extends BaseTest {
     @Test
-    private void checkoutFull() {
-        loginPage.open();
-        loginPage.login("RinatTest", "password");
-        Assert.assertTrue(loginPage.getUserName("RinatTest"));
+    @Link("https://www.demoblaze.com/")
+    public void checkoutFull() {
+        String str = "RinatTest";
+        String product = "Samsung galaxy s6";
+        Assert.assertTrue(loginPage.open().login(str, "password").getUserName(str));
 
-        loginPage.openProductPage("Samsung galaxy s6");
-
-        productPage.pressToCart();
-        productPage.getAddedSuccessMessage();
-        productPage.openCart();
-//
-        cartPage.placeOrder();
-        cartPage.fillOrderAndPress();
+        Assert.assertNotEquals(loginPage.openProductPage(product).pressToCart().getAddedSuccessMessage(), "");
+        productPage.openCart().placeOrder().fillOrderAndPress();
         Assert.assertEquals(cartPage.resultMessage(), "Thank you for your purchase!");
     }
 }
