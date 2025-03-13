@@ -82,6 +82,7 @@ public class LoginPage {
         wait.until(ExpectedConditions.presenceOfElementLocated(LOGINACCES_ITEM));
         wait.until(ExpectedConditions.textToBePresentInElementLocated(LOGINACCES_ITEM, "Welcome " + input));
         String text = driver.findElement(LOGINACCES_ITEM).getText();
+        log.info("Result = {} successful", text);
         return true;
     }
 

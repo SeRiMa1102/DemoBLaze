@@ -67,12 +67,12 @@ public class LoginTest extends BaseTest {
 //        Assert.assertEquals(loginPage.getErrorMessage(), "Wrong password.");
 //    }
 
-//    @Test
-//    public void checkPositiveLogin() {
-//        log.info("TEST checkPositiveLogin");
-//
-//        loginPage.open();
-//        loginPage.login("RinatTest", "password");
-//        Assert.assertTrue(loginPage.getUserName("RinatTest"));
-//    }
+    @Test
+    public void checkPositiveLogin() {
+        log.info("TEST checkPositiveLogin");
+
+        loginPage.open();
+        loginPage.login("RinatTest", "password");
+        Assert.assertTrue(loginPage.getUserName("RinatTest"));
+    }
 }
