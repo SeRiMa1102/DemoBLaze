@@ -68,8 +68,8 @@ public class LoginTest extends BaseTest {
 //        Assert.assertEquals(loginPage.getErrorMessage(), "Wrong password.");
 //    }
 
-    @Test
-    @Flaky
+//    @Test
+//    @Flaky
 //    public void checkPositiveLogin() {
 //        log.info("TEST checkPositiveLogin ");
 //
