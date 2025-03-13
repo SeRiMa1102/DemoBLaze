@@ -19,9 +19,8 @@ public class CartPage {
     private static By MONTH_AREA = By.id("month");
     private static By YEAR_AREA = By.id("year");
 
-    private static By PURCHASE_AREA = By.xpath("//button[onclick=\"purchaseOrder()\"]");
-
-    private static By RESULT_AREA = By.xpath("//button[onclick=\"purchaseOrder()\"]");
+    private static By PURCHASE_AREA = By.xpath("//button[@onclick=\"purchaseOrder()\"]");
+    private static By RESULT_AREA = By.xpath("//div[@data-animation]//h2");
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
@@ -41,10 +40,12 @@ public class CartPage {
         driver.findElement(MONTH_AREA).sendKeys("11");
         driver.findElement(YEAR_AREA).sendKeys("2025");
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.presenceOfElementLocated(PURCHASE_AREA));
         driver.findElement(PURCHASE_AREA).click();
     }
 
     public String resultMessage() {
-        return driver.findElement(PURCHASE_AREA).getText();
+        return driver.findElement(RESULT_AREA).getText();
     }
 }

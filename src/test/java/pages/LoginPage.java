@@ -1,8 +1,6 @@
 package pages;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -37,6 +35,9 @@ public class LoginPage {
         driver.findElement(LOGIN_AREA).click();
         driver.findElement(USER_FIELD).sendKeys(user);
         driver.findElement(USER_PASSWORD).sendKeys(password);
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.presenceOfElementLocated(LOGIN_BUTTON));
         driver.findElement(LOGIN_BUTTON).click();
     }
 
@@ -60,7 +61,6 @@ public class LoginPage {
     public boolean getUserName(String input) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(LOGINACCES_ITEM));
-
         wait.until(ExpectedConditions.textToBePresentInElementLocated(LOGINACCES_ITEM, "Welcome " + input));
 
         String text = driver.findElement(LOGINACCES_ITEM).getText();
@@ -69,6 +69,16 @@ public class LoginPage {
     }
 
     public void openProductPage(String product) {
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        wait.until(ExpectedConditions.refreshed(
+//                ExpectedConditions.presenceOfElementLocated(By.xpath("//a[text()='Samsung galaxy s6']"))
+//        ));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        wait.until(ExpectedConditions.elementToBeClickable(element));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(DEVICE_AREA, product))));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0, document.body.scrollHeight / 2)");
+        System.out.println(String.format(DEVICE_AREA, product));
         driver.findElement(By.xpath(String.format(DEVICE_AREA, product))).click();
     }
 }
