@@ -64,7 +64,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void checkPositiveLogin() {
         loginPage.open();
-        loginPage.login("RinatTest", "1234");
+        loginPage.login("RinatTest", "password");
         Assert.assertTrue(loginPage.getUserName("RinatTest"));
     }
 }
