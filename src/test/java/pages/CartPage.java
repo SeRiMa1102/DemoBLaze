@@ -37,7 +37,7 @@ public class CartPage {
     }
 
     @Step("Fill order form")
-    public void fillOrderAndPress(@org.jetbrains.annotations.NotNull Customer customer) {
+    public void fillOrderAndPress(Customer customer) {
         driver.findElement(NAME_AREA).sendKeys(customer.getFirstName());
         driver.findElement(COUNTRY_AREA).sendKeys(customer.getCountry());
         driver.findElement(CITY_AREA).sendKeys(customer.getCity());
