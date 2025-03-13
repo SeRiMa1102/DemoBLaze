@@ -1,6 +1,7 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import models.Customer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+@Log4j2
 public class CartPage {
     WebDriver driver;
 
@@ -30,6 +32,7 @@ public class CartPage {
 
     @Step("Click purchase button")
     public CartPage placeOrder() {
+        log.info("Click purchase button");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(PLACE_ORDER_AREA));
         driver.findElement(PLACE_ORDER_AREA).click();
@@ -38,6 +41,8 @@ public class CartPage {
 
     @Step("Fill order form")
     public void fillOrderAndPress(Customer customer) {
+        log.info("Fill order form");
+
         driver.findElement(NAME_AREA).sendKeys(customer.getFirstName());
         driver.findElement(COUNTRY_AREA).sendKeys(customer.getCountry());
         driver.findElement(CITY_AREA).sendKeys(customer.getCity());
@@ -52,6 +57,8 @@ public class CartPage {
 
     @Step("Return result of transaction message")
     public String resultMessage() {
+        log.info("Return result of transaction message");
+        log.info(driver.findElement(RESULT_AREA).getText());
         return driver.findElement(RESULT_AREA).getText();
     }
 }
