@@ -15,7 +15,7 @@ public class CheckoutTest extends BaseTest {
     public void checkoutFull() {
         String str = "RinatTest";
         String product = "Samsung galaxy s6";
-        Assert.assertTrue(loginPage.open().login(str, "password").getUserName(str));
+        Assert.assertTrue(loginPage.open().login(str, "1234").getUserName(str));
 
         Assert.assertNotEquals(loginPage.openProductPage(product).pressToCart().getAddedSuccessMessage(), "");
 
