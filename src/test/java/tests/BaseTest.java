@@ -6,14 +6,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import pages.CartPage;
 import pages.LoginPage;
 import org.openqa.selenium.chrome.ChromeOptions;
+import pages.ProductPage;
 
 import java.time.Duration;
 
 public class BaseTest {
     protected WebDriver driver;
     LoginPage loginPage;
+    CartPage cartPage;
+    ProductPage productPage;
 
     @BeforeMethod
     public void setup() {

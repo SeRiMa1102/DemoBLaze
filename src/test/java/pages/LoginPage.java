@@ -68,11 +68,7 @@ public class LoginPage {
         return true;
     }
 
-    public void addToCart(String product) {
+    public void openProductPage(String product) {
         driver.findElement(By.xpath(String.format(DEVICE_AREA, product))).click();
     }
-
-
-
-
 }
