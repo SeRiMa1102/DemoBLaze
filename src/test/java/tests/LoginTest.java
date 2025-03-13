@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Flaky;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -68,8 +69,9 @@ public class LoginTest extends BaseTest {
 //    }
 
     @Test
+    @Flaky
     public void checkPositiveLogin() {
-        log.info("TEST checkPositiveLogin");
+        log.info("TEST checkPositiveLogin ");
 
         loginPage.open();
         loginPage.login("RinatTest", "password");
